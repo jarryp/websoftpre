@@ -1,4 +1,6 @@
 <?php
+//comentario
+
 	const LBS ='Library/';
 	const VIEWS = './Views/';
 	define('DFT','default/');

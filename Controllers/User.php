@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
 class User extends Controllers {
 
 	function __construct(){

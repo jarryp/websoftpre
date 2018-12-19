@@ -63,7 +63,7 @@
                                 <a href="#">Ejecución<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#">O. Compra</a>
+                                        <a href="javascript:cargar_pagina('Ocompra/ocompra')">O. Compra</a>
                                     </li>
                                     <li>
                                         <a href="#">O. Servicio</a>
