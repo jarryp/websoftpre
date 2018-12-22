@@ -84,7 +84,15 @@ class Especifica extends Controllers {
 
 
 	function cargarComboPorPartida(){
-		$json = json_decode($this->model->listadoPorPartida($_REQUEST['cod_partida']));
+		$json = json_decode($this->model->listadoPorPartida($_REQUEST['cod_partida'],$_REQUEST['id_periodo']));
+		echo "<option value='S'>-- Seleccione --</option>";
+		foreach ($json as $especifica) {
+			echo "<option value='$especifica->id_especifica'>$especifica->cod_especifica - $especifica->nombre</option>";
+		}
+	}
+
+	function cargarComboPorCadena(){
+		$json = json_decode($this->model->listadoPorCadena($_REQUEST['cadena'],$_REQUEST['id_periodo']));
 		echo "<option value='S'>-- Seleccione --</option>";
 		foreach ($json as $especifica) {
 			echo "<option value='$especifica->id_especifica'>$especifica->cod_especifica - $especifica->nombre</option>";

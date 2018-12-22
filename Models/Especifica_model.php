@@ -61,10 +61,20 @@ class Especifica_model extends Conexion {
 		return json_encode($this->db->ejecutaSQL($query));
 	}
 
-	function listadoPorPartida($cod_partida){
+	function listadoPorPartida($cod_partida,$id_periodo){
 		$query="select id_especifica, cod_especifica, nombre
 				from especifica 
-				where substring(cod_especifica,13,4)='$cod_partida'
+				where substring(cod_especifica,13,4)='$cod_partida' and 
+				      id_periodo = $id_periodo 
+				order by cod_especifica";
+		return json_encode($this->db->ejecutaSQL($query));
+	}
+
+
+	function listadoPorCadena($cadena,$id_periodo){
+		$query="select id_especifica, cod_especifica, nombre
+				from especifica 
+				where cod_especifica like '%$cadena%' and id_periodo = $id_periodo
 				order by cod_especifica";
 		return json_encode($this->db->ejecutaSQL($query));
 	}

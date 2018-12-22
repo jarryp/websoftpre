@@ -18,7 +18,7 @@
       				<span class="input-group-btn">
         				<button class="btn btn-success" type="button" >**</button>
       				</span>
-    			</div>
+    		</div>
      	</div>
      	<div class="col-md-1"><label>Fecha</label></div>
      	<div class="col-md-2">
@@ -215,6 +215,18 @@
                 		?>
                 		</select>
                 		<br>
+                		<div class="form-group col-md-12">
+       						<div class="col-md-3"><label>Framento de Código:</label></div>
+     						<div class="col-md-4">
+     							<div class="input-group">
+      								<input type="text" class="form-control" id="cadena3" name="cadena3">
+      								<span class="input-group-btn">
+        							<button class="btn btn-success" type="button" onclick="filtrarEspecifica3()">**</button>
+      								</span>
+    							</div>
+     						</div>
+     					</div>
+                		<br>
                 		<select id="cmbCuenta" name="cmbCuenta" class="form-control">
                 			<option value="S"> -- Seleccione -- </option>
                 		</select>
@@ -261,10 +273,25 @@
 
      function cargarCuentaPorPartida(){
      	var xcod_partida = document.getElementById("cmbPartida").value.trim();
+     	var xid_periodo  = "<?php echo $_SESSION['id_periodo']?>";
      	$.ajax({
      		type:"GET",
      		url:"<?php echo URL;?>Especifica/cargarComboPorPartida",
-     		data:{cod_partida:xcod_partida},
+     		data:{cod_partida:xcod_partida,id_periodo:xid_periodo},
+     		success:function(response){
+     			$("#cmbCuenta").html(response);
+     		}
+
+     	});
+     }
+
+     function filtrarEspecifica3(){
+     	var xcadena     = document.getElementById("cadena3").value.trim();
+     	var xid_periodo = "<?php echo $_SESSION['id_periodo']?>";
+     	$.ajax({
+     		type:"GET",
+     		url:"<?php echo URL;?>Especifica/cargarComboPorCadena",
+     		data:{cadena:xcadena,id_periodo:xid_periodo},
      		success:function(response){
      			$("#cmbCuenta").html(response);
      		}
