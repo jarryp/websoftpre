@@ -36,6 +36,13 @@ class Partida_model extends Conexion {
 		return json_encode($this->db->ejecutaSQL($query));
 	}
 
+	function listado2Model($id_periodo){
+		$query="select cod_partida, cod_partida || ' - ' || nombre as descripcion  
+				from partida 
+				where id_periodo = ".$id_periodo." order by cod_partida";
+		return json_encode($this->db->ejecutaSQL($query));
+	}
+
 	function cargarCombo($fields,$condicion,$orden){
 		return json_encode($this->db->select3($fields,$this->tabla,$condicion,$orden));
 	}

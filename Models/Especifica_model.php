@@ -61,6 +61,14 @@ class Especifica_model extends Conexion {
 		return json_encode($this->db->ejecutaSQL($query));
 	}
 
+	function listadoPorPartida($cod_partida){
+		$query="select id_especifica, cod_especifica, nombre
+				from especifica 
+				where substring(cod_especifica,13,4)='$cod_partida'
+				order by cod_especifica";
+		return json_encode($this->db->ejecutaSQL($query));
+	}
+
 	function lfiltroModel(){
 		$query="select cod_especifica , nombre 
 				from especifica 

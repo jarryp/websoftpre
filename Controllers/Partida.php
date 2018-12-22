@@ -46,6 +46,10 @@ class Partida extends Controllers {
 		echo $this->model->listadoModel($_REQUEST['id_periodo']);
 	}
 
+	function listado2(){
+		echo $this->model->listado2Model($_REQUEST['id_periodo']);
+	}
+
 	function cargarCmb(){
 		$json = json_decode($this->model->cargarCombo("id_partida,cod_partida,nombre","id_periodo=".$_REQUEST['id_periodo'],"cod_partida"));
 		echo "<option value='S'>-- Seleccione --</option>";
