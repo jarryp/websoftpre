@@ -67,6 +67,7 @@
 				if(response==1){
 					document.location ="<?php echo URL;?>Principal/principal";
 				}else{
+				    alert(response);
 					alert("Email o Contraseña Incorrectos");
 				}
 			}

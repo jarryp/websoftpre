@@ -115,7 +115,7 @@ class User extends Controllers {
 	public function usuarioLogin(){
 	if( isset($_POST["email"]) && isset($_POST["passwd"]) ){
 
-	$response = $this->model->usuarioLogin("idUser,Name,LastName,usuario,email,pgp_sym_decrypt(password,'p4l4c10ssyst3ms') as password ","Email= '".$_POST['email']."' ");
+	$response = $this->model->usuarioLogin("idUser,Name,LastName,usuario,email,trim(password) as password ","Email= '".$_POST['email']."' ");
 	$response = $response[0];
 
 			if($response["password"]==$_POST["passwd"]){

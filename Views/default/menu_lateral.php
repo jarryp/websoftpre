@@ -102,7 +102,7 @@
                     <a href="#"><i class="fa fa-sitemap"></i>Tesoreria Municipal<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Beneficiarios E.P.</a>
+                                <a href="javascript:cargar_pagina('BenfEp/benfep')">Beneficiarios E.P.</a>
                             </li>
                             <li>
                                 <a href="#">Bancos</a>

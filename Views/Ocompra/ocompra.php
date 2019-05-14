@@ -165,7 +165,7 @@
                 <h4 class="modal-title" id="myModalLabel">Procesar Articulos</h4>
             </div>
         <div class="modal-body">
-            <form role="form">
+            <form role="form" id="formArtitulo" name="formArtitulo">
                 <div class="form-group">
                 	<div class="col-md-1">
                 		<label>Cantidad:</label>
@@ -234,7 +234,9 @@
 
                 	</div>
                 	<div class="col-md-12">
-                		<button style="float: left;" class="btn btn-primary">Agregar</button>
+                		<button style="float: left;" 
+                		        class="btn btn-primary" 
+                		        onclick="addRowArticulo()">Agregar</button>
                 	</div>
 
              </form>
@@ -298,5 +300,33 @@
 
      	});
      }
+
+
+     function addRowArticulo(){
+     	
+     	alert("Hola");
+     	return;
+     	//alert($('input[name=excento]:checked','#formArticulo').val().trim());
+     	/*
+     	var xcantidad = parseInt(document.getElementById("cantidad").value);
+     	var xnombre   = document.getElementById("nombre").value.trim();
+     	if($('input[name=excento]:checked','#formArticulo').val().trim()=="Excento"){
+     		var xapliIva = "N";
+     	}
+     	if($('input[name=excento]:checked','#formArticulo').val().trim()=="Aplica"){
+     		var xapliIva = "S";
+     	}
+     	var xpreciou = parseFloat(document.getElementById("preciou").value );
+
+
+     	if(xcantidad>0 && xnombre!="" && xapliIva.trim()!="" && xpreciou>0){
+     		alert("Hay DAtos");
+     	}else{
+     		alert("Campos Requeridos Vacios!");
+     	}
+     	*/
+     
+     }
+
 
 </script>
