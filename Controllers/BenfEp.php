@@ -27,6 +27,14 @@ class BenfEp extends Controllers{
 		$json = $this->model->listadoModel("*","nombre");
 		echo $json;
     }
+    
+    public function add(){
+		$this->model->setIdEntidad($_REQUEST['id_entidad']);
+		$this->model->setIdUser($_REQUEST['id_usuario']);
+		$this->model->setNombre($_REQUEST['nombre']);
+		echo $this->model->save();
+	}
+    
 }
 
 ?>
