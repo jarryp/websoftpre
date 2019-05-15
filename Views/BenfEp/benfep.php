@@ -78,6 +78,9 @@
                   <button type="button"
                           class="btn btn-primary"
                           onclick="javascript:envia_benfep()">Guardar</button>
+                <div class="row">
+                    <div id="area_mensaje"></div>
+                </div>
              </form>
         </div>
         <div class="modal-footer">
@@ -88,6 +91,7 @@
 </div>
 
 <script>
+    
     $(document).ready(function(){
                 $("#tablaBenfEp").DataTable({
                     "order": [[1, "asc"]],
@@ -113,4 +117,57 @@
         $("#ventana").modal("show");
         document.getElementById("nombre").focus();
     }
+    
+    function verventanamodalEditar(id){
+        $.ajax({
+            type:"POST",
+            url:"<?php echo URL;?>BenfEp/consulta",
+            data:{id:id},
+            success:function(response){
+                var xdata = response.split("#");
+                if(xdata[0]=="A"){
+                            document.getElementById("id").value     = xdata[1].trim();
+                            document.getElementById("nombre").value = xdata[2].trim();
+                            $("#ventana").modal("show");                                        
+                        }else{
+                          alert("Error de Consulta");
+                        }
+                    }
+                });
+
+                
+            }
+    
+    function envia_benfep(){
+        if($("#nombre").val().trim()!=""){
+          var xid_entidad   = "<?php echo $_SESSION['id_entidad']?>";
+          var xid_usuario   = "<?php echo $_SESSION['idusuario']?>";
+          var xnombre       = $("#nombre").val().trim();
+          var xid           = $("#id").val().trim();
+           if(xid==""){
+               $.ajax({
+                  type:"POST",
+                  url:"<?php echo URL;?>BenfEp/add",
+                  data:{id_entidad:xid_entidad,id_usuario:xid_usuario,nombre:xnombre},
+                  success:function(response){
+                      $("#area_mensaje").html(response);
+                  }
+
+                });
+           }else{
+               $.ajax({
+                  type:"POST",
+                  url:"<?php echo URL;?>BenfEp/update",
+                  data:{id:xid,id_entidad:xid_entidad,id_usuario:xid_usuario,nombre:xnombre},
+                  success:function(response){
+                    $("#area_mensaje").html(response);
+                  }
+                });
+           }
+        }else{
+          alert("Ingrese nombre del beneficiario");   
+        }
+    }
+    
+    
 </script>

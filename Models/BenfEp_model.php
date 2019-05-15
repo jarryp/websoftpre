@@ -35,11 +35,15 @@ class BenfEp_model extends Conexion {
     }
     
     function getIdUser(){
-        return $this->id_userM
+        return $this->id_user;
     }
     
     function listadoModel($fields,$orden){ 
 	  return json_encode($this->db->select3($fields,$this->tabla," id_entidad=".ID_ENTIDAD,$orden)); 
+	}
+    
+    function consultaModel(){
+		return $this->db->select1("*",$this->tabla,"id_benfep=$this->id");
 	}
     
     function save(){
@@ -49,7 +53,9 @@ class BenfEp_model extends Conexion {
 	}
     
     function update(){
-		$query="update $this->tabla set nombre='$this->nombre', id_user=$this->id_user updated_at = now()
+		$query="update $this->tabla set nombre='$this->nombre', 
+                                        id_user=$this->id_user, 
+                                        updated_at = now()
 		        where id_benfep=$this->id ";
 		return $this->db->ejecutaMdl($query);
 	}

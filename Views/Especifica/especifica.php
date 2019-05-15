@@ -193,7 +193,7 @@ function verventanamodalEditar(xid){
                     url:"<?php echo URL;?>Especifica/muestraNombres",
                     data:{ codigo:xdato[2].trim(),id_periodo:xid_periodo },
                     success:function(response){
-                      $("#area_mensaje").html(response);;
+                      $("#area_mensaje").html(response);
                     }
                   });
                     
