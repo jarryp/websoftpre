@@ -221,7 +221,7 @@
                     </div>
                 </div>
                 <!-- /. ROW  -->
-				<footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez</a></p></footer>
+				<footer><p>Todos los Derechs Reservados. Creado por: <a href="http://palaciossystems.com">Palacio's Systems</a></p></footer>
             </div>
             <!-- /. PAGE INNER  -->
         </div>

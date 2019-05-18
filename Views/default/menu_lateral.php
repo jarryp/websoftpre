@@ -105,7 +105,7 @@
                                 <a href="javascript:cargar_pagina('BenfEp/benfep')">Beneficiarios E.P.</a>
                             </li>
                             <li>
-                                <a href="#">Bancos</a>
+                                <a href="javascript:cargar_pagina('Banco/banco')">Bancos</a>
                             </li>
                             <li>
                                 <a href="#">Cuentas Bancarias</a>
