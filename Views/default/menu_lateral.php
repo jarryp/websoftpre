@@ -108,7 +108,7 @@
                                 <a href="javascript:cargar_pagina('Banco/banco')">Bancos</a>
                             </li>
                             <li>
-                                <a href="#">Cuentas Bancarias</a>
+                                <a href="javascript:cargar_pagina('Cuentab/cuentab')">Cuentas Bancarias</a>
                             </li>
                             <li>
                                 <a href="#">Movimientos Bancarios</a>
