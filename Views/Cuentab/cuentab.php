@@ -154,6 +154,29 @@
       document.getElementById("cmbUsoCuenta").focus();
    }
 
+   function verventanamodalEditar(id){
+        $.ajax({
+            type:"POST",
+            url:"<?php echo URL;?>Cuentab/consulta",
+            data:{id:id},
+            success:function(response){
+                var xdata = response.split("#");
+                if(xdata[0]=="A"){
+                            $("#id").val(xdata[1].trim());    
+                            $("#cmbUsoCuenta").val(xdata[2]);  
+                            $("#cmbBanco").val(xdata[3]);
+                            $("#num_cuenta").val(xdata[4]);
+                            $("#saldo_inicial").val(xdata[5]);
+                            $("#descripcion").val(xdata[6]);
+                            $("#area_mensaje").html("");
+                            $("#ventana").modal("show");                                        
+                }else{
+                  alert("Error de Consulta");
+                }
+             }
+          });            
+    }
+
 
 
    function envia_cuentab(){

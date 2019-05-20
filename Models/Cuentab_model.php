@@ -74,9 +74,12 @@ class Cuentab_model extends Conexion {
 		return $this->id_entidad;
 	}
 
+	function consultaModel(){
+		return $this->db->select1("*",$this->tabla,"id_cuentab=$this->id");
+	}
 
 	function listadoModel(){ 
-		$sql="select c.id_banco,
+		$sql="select c.id_cuentab, c.id_banco,
        			b.nombre as banco, 
        			case 
         			when id_uso_cuenta=1 then 'Situado Constitucional'
@@ -108,7 +111,7 @@ class Cuentab_model extends Conexion {
                                         descripcion   = '$this->descripcion',
                                         saldo_inicial = $this->saldo_inicial,
                                         updated_at    = now()
-		        where id_banco=$this->id ";
+		        where id_cuentab=$this->id ";
 		return $this->db->ejecutaMdl($query);
 	}
 
