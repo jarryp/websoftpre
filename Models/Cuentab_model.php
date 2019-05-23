@@ -92,7 +92,8 @@ class Cuentab_model extends Conexion {
        			c.descripcion 
 				from cuentasb c 
 				left join banco b on b.id_banco = c.id_banco 
-				where b.id_entidad =  ".$this->getIdEntidad();
+				where b.id_entidad =  ".$this->getIdEntidad(). " 
+				order by banco, num_cuenta ";
 	return json_encode($this->db->ejecutaSQL($sql));
 	}
 

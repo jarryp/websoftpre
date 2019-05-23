@@ -117,7 +117,7 @@
                                 <a href="#">Conciliaciones Bancarias<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#">Saldos Bancarios (Estados de Cuenta)</a>
+                                        <a href="javascript:cargar_pagina('Edocuenta/edocuenta')">Saldos Bancarios (Estados de Cuenta)</a>
                                     </li>
                                     <li>
                                         <a href="#">Registro de Cobro de Efectos de Pago</a>
