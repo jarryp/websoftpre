@@ -16,6 +16,18 @@ class Edocuenta extends Controllers{
 		}
 	}
 
+	function consulta(){
+		$this->model->setId($_REQUEST['id']);
+		$res = $this->model->consultaModel();
+		$res = $res[0];
+		if($res!=NULL){	  
+            $cadena="A#".$res['id_estado_cuenta']."#".$res['id_cuentab']."#".$res['agno']."#".$res['mes']."#".$res['saldo'];
+		}else{
+			$cadena="B#";
+		}
+		echo $cadena;
+	}
+
 	function listado(){
 		echo $this->model->listadoModel($_REQUEST['id_entidad']);
     }

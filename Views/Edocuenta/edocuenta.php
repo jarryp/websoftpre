@@ -44,8 +44,8 @@
                             <td> ". $edocuenta->agno ."</td>
                             <td> ". $edocuenta->nom_mes ."</td>
                             <td align='right'> ". number_format($edocuenta->saldo,2,'.',',') ."</td>
-                            <td> <button class='btn btn-success' onclick='javascript:verventanamodalEditar($edocuenta->id_edocuenta)'>Editar</button> </td>
-                            <td> <button class='btn btn-danger' onclick='javascript:elimina_usuario($edocuenta->id_edocuenta)'>Elimiar</button></td>
+                            <td> <button class='btn btn-success' onclick='javascript:verventanamodalEditar($edocuenta->id_estado_cuenta)'>Editar</button> </td>
+                            <td> <button class='btn btn-danger' onclick='javascript:elimina_usuario($edocuenta->id_estado_cuenta)'>Elimiar</button></td>
                               </tr>";
                       }
                      ?>
@@ -162,8 +162,32 @@
       $("#Saldo").val("");
       $("#area_mensaje").html("");
       $("#ventana").modal("show");
-      $("#cmbBanco").focus();
+      $("#cmbCuentab").focus();
    }
+
+
+   function verventanamodalEditar(id){
+        $.ajax({
+            type:"POST",
+            url:"<?php echo URL;?>Edocuenta/consulta",
+            data:{id:id},
+            success:function(response){
+                var xdata = response.split("#");
+                if(xdata[0]=="A"){
+                  $("#id").val(xdata[1]);
+                  $("#cmbCuentab").val(xdata[2]);
+                  $("#cmbAgno").val(xdata[3]);
+                  $("#cmbMes").val(xdata[4]);
+                  $("#saldo").val(xdata[5]);
+                  $("#area_mensaje").html("");
+                  $("#ventana").modal("show");
+                  $("#cmbCuentab").focus();                                  
+                }else{
+                    alert("Error de Consulta");
+                }
+              }
+           });              
+     }
 
 
    function envia_edocuenta(){

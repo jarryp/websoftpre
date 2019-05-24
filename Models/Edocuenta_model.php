@@ -86,6 +86,10 @@ class Edocuenta_model extends Conexion {
 	return json_encode($this->db->ejecutaSQL($sql));
 	}
 
+	function consultaModel(){
+		return $this->db->select1("*",$this->tabla,"id_estado_cuenta=$this->id");
+	}
+
 	function save(){
 		$query="insert into $this->tabla (id_cuentab,agno,mes,saldo,id_user) 
 		      values ($this->id_cuentab,$this->agno,$this->mes,$this->saldo,$this->id_user)";
