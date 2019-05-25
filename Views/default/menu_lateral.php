@@ -150,7 +150,7 @@
                                 <a href="#">Maestros<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#">Departamentos</a>
+                                        <a href="javascript:cargar_pagina('Departamento/departamento')">Departamentos</a>
                                     </li>
                                     <li>
                                         <a href="#">Tipos de Personal</a>
