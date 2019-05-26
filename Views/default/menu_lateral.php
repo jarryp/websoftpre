@@ -153,7 +153,7 @@
                                         <a href="javascript:cargar_pagina('Departamento/departamento')">Departamentos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Tipos de Personal</a>
+                                        <a href="javascript:cargar_pagina('TPersonal/tpersonal')">Tipos de Personal</a>
                                     </li>
                                     <li>
                                         <a href="#">Periodos de Pago</a>
