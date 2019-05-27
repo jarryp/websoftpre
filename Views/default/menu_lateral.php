@@ -161,7 +161,7 @@
                                     </li>
                                     -->
                                     <li>
-                                        <a href="#">Nivel Academico</a>
+                                        <a href="javascript:cargar_pagina('Nivelacad/nivelacad')">Nivel Academico</a>
                                     </li>
                                     <li>
                                         <a href="#">Cargos</a>
