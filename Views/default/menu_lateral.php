@@ -164,7 +164,7 @@
                                         <a href="javascript:cargar_pagina('Nivelacad/nivelacad')">Nivel Academico</a>
                                     </li>
                                     <li>
-                                        <a href="#">Cargos</a>
+                                        <a href="javascript:cargar_pagina('Cargo/cargo')">Cargos</a>
                                     </li>
                                     <li>
                                         <a href="#">Asignaciones</a>
