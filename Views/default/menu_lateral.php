@@ -209,7 +209,7 @@
                                 <a href="#">Vehiculos<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#">Tipos</a>
+                                        <a href="javascript:cargar_pagina('TipoVehiculo/tipovehiculo')">Tipos</a>
                                     </li>
                                     <li>
                                         <a href="#">Usos</a>
