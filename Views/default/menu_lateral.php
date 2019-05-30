@@ -223,7 +223,7 @@
                                 <a href="#">Maestros<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#">Unidad Tributaria</a>
+                                        <a href="javascript:cargar_pagina('UndTributaria/undtributaria')">Unidad Tributaria</a>
                                     </li>
                                     <li>
                                         <a href="javascript:cargar_pagina('FormaPago/formapago')">Formas de Pago</a>
