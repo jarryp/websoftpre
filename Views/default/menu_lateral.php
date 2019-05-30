@@ -215,7 +215,7 @@
                                         <a href="javascript:cargar_pagina('UsoVehiculo/usovehiculo')">Usos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Marcas</a>
+                                        <a href="javascript:cargar_pagina('MarcaVehiculo/marcavehiculo')">Marcas</a>
                                     </li>
                                 </ul>
                             </li>
