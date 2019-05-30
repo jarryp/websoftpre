@@ -212,7 +212,7 @@
                                         <a href="javascript:cargar_pagina('TipoVehiculo/tipovehiculo')">Tipos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Usos</a>
+                                        <a href="javascript:cargar_pagina('UsoVehiculo/usovehiculo')">Usos</a>
                                     </li>
                                     <li>
                                         <a href="#">Marcas</a>
