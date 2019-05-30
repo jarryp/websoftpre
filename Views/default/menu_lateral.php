@@ -226,7 +226,7 @@
                                         <a href="#">Unidad Tributaria</a>
                                     </li>
                                     <li>
-                                        <a href="#">Formas de Pago</a>
+                                        <a href="javascript:cargar_pagina('FormaPago/formapago')">Formas de Pago</a>
                                     </li>
                                     <li>
                                         <a href="#">Conceptos</a>
