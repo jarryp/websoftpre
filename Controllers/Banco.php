@@ -35,8 +35,8 @@ class Banco extends Controllers{
 		}else{
 			$cadena="B#";
 		}
-		echo $cadena;
-	}
+			echo $cadena;
+		}
 
 
 	public function add(){

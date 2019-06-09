@@ -34,6 +34,19 @@ class Periodop extends Controllers{
 		echo $this->model->periodoActual("descripcion","id_periodo= ".$_REQUEST['id_periodo']);	
 	}
 
+	function getNumOcompra(){
+		$this->model->setIdPeriodo($_REQUEST['id_periodo']);
+		$res = $this->model->consultaModel();
+		$res = $res[0];
+		
+		if($res!=NULL){	  
+            $cadena="A#".$res['nro_ocompra'];
+		}else{
+			$cadena="B#";
+		}
+			echo $cadena; 
+	}
+
 }
 
 ?>

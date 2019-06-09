@@ -1,3 +1,5 @@
+
+
 <div id="page-wrapper">
  <div id="page-inner">
   <div class="row">
@@ -5,7 +7,7 @@
     <div class="panel panel-primary">
      <div class="panel-heading">
      	Usuario:<strong> <?php echo $_SESSION['n_usuario']; ?> | 
-    	Procesamiento y Consulta de Ordenes de Compra </strong>
+		Procesamiento y Consulta de Ordenes de Compra </strong>
      </div>
      <div class="panel-body">
       <form name="formOcompra" id="formOcompra">
@@ -13,16 +15,19 @@
        <div class="form-group col-md-12">
        	<div class="col-md-1"><label>Código</label></div>
      	<div class="col-md-2">
+		 <input type="hidden" class="form-control" id="id" name="id">
      		<div class="input-group">
-      				<input type="text" class="form-control" id="id" name="id">
+      				<input type="text" class="form-control" id="cod_ocompra" name="cod_ocompra">
       				<span class="input-group-btn">
-        				<button class="btn btn-success" type="button" >**</button>
+        				<button class="btn btn-default" type="button" >**</button>
       				</span>
     		</div>
      	</div>
      	<div class="col-md-1"><label>Fecha</label></div>
-     	<div class="col-md-2">
-     		<input type="date" name="fecha" id="fecha" maxlength="10" placeholder="2019-01-16" class="form-control">
+     	<div class="col-md-3">
+			 <input type="date" name="fecha" id="fecha" 
+					maxlength="10" placeholder="2019-01-16" class="form-control"
+					value="<?php echo date('Y-m-d');?>">
      	</div>
 
      	</div>
@@ -40,7 +45,7 @@
      	<div class="col-md-1"><label>Código Beneficiario</label></div>
      		<div class="col-lg-2">
     			<div class="input-group">
-      				<input type="text" class="form-control" id="id_benefidiario">
+      				<input type="text" class="form-control" id="id_beneficiario" onblur="busca_benf()">
       				<span class="input-group-btn">
         				<button class="btn btn-success" type="button"   onclick="ver_modal2()">**</button>
       				</span>
@@ -116,161 +121,33 @@
 </div>
 </div>
 
-<div class="modal"
-     id="modal_beneficiarios"
-     tabindex="-1"
-     role="dialog"
-     aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Cerrar</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Buscar Benficiarios</h4>
-            </div>
-        <div class="modal-body">
-            <form role="form">
-                <div class="form-group">
-                  <input class="form-control" type="text" id="cadena" name="cadena" maxlength="60" placeholder="Cadena de Caracteres para Busqueda">
-                  <button type="button" class="btn btn-primary" onclick="filtroEspecifica2()">Buscar</button>
-               </div>
-               <div id="area_resultados" class="form-group" style="height: 400px; overflow-y: scroll;">
-               	
-               </div>
-             </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        </div>
-        </div>
-    </div>
-</div>
 
 
 
-<div class="modal"
-     id="modal_articulos"
-     tabindex="-1"
-     role="dialog"
-     aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Cerrar</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Procesar Articulos</h4>
-            </div>
-        <div class="modal-body">
-            <form role="form" id="formArtitulo" name="formArtitulo">
-                <div class="form-group">
-                	<div class="col-md-1">
-                		<label>Cantidad:</label>
-                	</div>
-                	<div class="col-md-11">
-                		<input type="text" name="cantidad" id="cantidad" placeholder="0.00">
-                	</div>
-                </div>
-                <div class="form-group">
-                	<div class="col-md-1">
-                		<label>Articulo:</label>
-                	</div>
-                	<div class="col-md-11">
-                		<input type="text" name="nombre" id="nombre" class="form-control" placeholder="nombre del articulo" maxlength="80">
-                	</div>
-                </div>
-                <div class="form-group">
-                	<div class="col-md-1">
-                		<label>Impuesto:</label>
-                	</div>
-                	<div class="col-md-11">
-                		<input type="radio" name="excento" value="Aplica">Aplica IVA
-                		<input type="radio" name="excento" value="Excento"> Excento
-                	</div>
-                </div>
-                <div class="form-group">
-                	<div class="col-md-1">
-                		<label>Precio Unitario:</label>
-                	</div>
-                	<div class="col-md-11">
-                		<input type="text" name="preciou" id="preciou" placeholder="1000.00">
-                	</div>
-                </div>
-
-                	<div class="col-md-12">
-                		<label>Partida:</label>
-                		<select id="cmbPartida" name="cmbPartida" class="form-control" onchange ="cargarCuentaPorPartida()">
-                		<option value="S">-- Seleccione --</option>
-                		<?php 
-                			$json = file_get_contents(URL."Partida/listado2?id_periodo=".$_SESSION['id_periodo']);
-                			if($json!=NULL){
-                      			$datos = json_decode($json);
-                      			foreach($datos as $partida){
-                      				echo "<option value='$partida->cod_partida'>$partida->descripcion</option>";
-                      			}
-                      		}
-                		?>
-                		</select>
-                		<br>
-                		<div class="form-group col-md-12">
-       						<div class="col-md-3"><label>Framento de Código:</label></div>
-     						<div class="col-md-4">
-     							<div class="input-group">
-      								<input type="text" class="form-control" id="cadena3" name="cadena3">
-      								<span class="input-group-btn">
-        							<button class="btn btn-success" type="button" onclick="filtrarEspecifica3()">**</button>
-      								</span>
-    							</div>
-     						</div>
-     					</div>
-                		<br>
-                		<select id="cmbCuenta" name="cmbCuenta" class="form-control">
-                			<option value="S"> -- Seleccione -- </option>
-                		</select>
-                		<br>
-
-                	</div>
-                	<div class="col-md-12">
-                		<button style="float: left;" 
-                		        class="btn btn-primary" 
-                		        onclick="addRowArticulo()">Agregar</button>
-                	</div>
-
-             </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        </div>
-        </div>
-    </div>
-</div>
-
-
+<?php 
+/*  AGREGANDO VENTANAS MODALES PARA PROCESAMIENTO Y 
+    CONSULTA DE DATOS SOBRE ARCHIVOS MAESTROS  */
+	require_once("consultaBeneficiario.php"); 
+	require_once("add_articulos.php"); 
+	require_once("add_natural.php"); 
+	require_once("add_juridico.php"); 
+	require_once("add_interno.php"); 
+?>
 
 
 
 <script type="text/javascript">
+
+
+	
 	
 	function ver_modal2(){
-
-		if($("#cmbTipoBenf").val().trim()!="S"){
-			$("#modal_beneficiarios").modal("show");	
-		}else{
-			alert("Seleccione antes el Tipo de Beneficiario para ejecutar esta consulta");
-		}
-        
+		$("#modal_beneficiarios").modal("show");	
      }
 
 
      function ver_modal3(){
-
-		
-			$("#modal_articulos").modal("show");	
-		
-        
+		$("#modal_articulos").modal("show");	
      }
 
      function cargarCuentaPorPartida(){
@@ -301,32 +178,129 @@
      	});
      }
 
+	 function busca_benf(){
+		var xid_entidad      = "<?php echo $_SESSION['id_entidad']?>";
+		var xid_tipo_benf    = $("#cmbTipoBenf").val();
+		var xid_beneficiario = $("#id_beneficiario").val();
 
-     function addRowArticulo(){
-     	
-     	alert("Hola");
-     	return;
-     	//alert($('input[name=excento]:checked','#formArticulo').val().trim());
-     	/*
-     	var xcantidad = parseInt(document.getElementById("cantidad").value);
-     	var xnombre   = document.getElementById("nombre").value.trim();
-     	if($('input[name=excento]:checked','#formArticulo').val().trim()=="Excento"){
-     		var xapliIva = "N";
-     	}
-     	if($('input[name=excento]:checked','#formArticulo').val().trim()=="Aplica"){
-     		var xapliIva = "S";
-     	}
-     	var xpreciou = parseFloat(document.getElementById("preciou").value );
+		if(xid_tipo_benf!="S"){
+		$.ajax({
+     		type:"GET",
+     		url:"<?php echo URL;?>Funciones/getNombreBeneficiario",
+     		data:{id_entidad:xid_entidad,id_tipo_benf:xid_tipo_benf,
+			      id_beneficiario:xid_beneficiario},
+     		success:function(response){
+				 xdata = response.trim().split("#");
+				if(xdata[0]=="A"){
+					$("#beneficiario").val(xdata[1]);
+				}else{
+					if(xid_tipo_benf == "1"){
+				    	formJuridico();
+					}
+					if(xid_tipo_benf == "2"){
+				    	formNatural();
+					}
+					if(xid_tipo_benf == "3"){
+				    	formInterno();
+					}
+				}
+     		}
+
+     	});
+		}else{
+			alert("Seleccione tipo de Beneficiario");
+		}
+
+	 }
+	 
+	 function setNumOcompra(){
+		var xid_periodo =  "<?php echo $_SESSION['id_periodo']?>";
+		$.ajax({
+			type:"GET",
+			url: "<?php echo URL;?>Periodop/getNumOcompra",
+			data:{id_periodo:xid_periodo},
+			success:function(response){
+				xdata = response.trim().split("#");
+				if(xdata[0]=="A"){
+					xcodigo = parseInt(xdata[1])+1;
+					if(xcodigo.length>1){
+						$("#cod_ocompra").val(xcodigo);
+					}else{
+						$("#cod_ocompra").val("0"+xcodigo);
+					}
+				}else{
+					$("#cod_ocompra").val("");
+				}
+			}
+		});
+	 }
 
 
-     	if(xcantidad>0 && xnombre!="" && xapliIva.trim()!="" && xpreciou>0){
-     		alert("Hay DAtos");
-     	}else{
-     		alert("Campos Requeridos Vacios!");
-     	}
-     	*/
-     
-     }
 
+	 function formJuridico(){
+                 $("#id_bjuridico").val("");
+                 $("#rif").val("");
+                 document.getElementById("nombre").value    = "";
+                 document.getElementById("telefono").value  = "";
+                 document.getElementById("email").value     = "";
+                 document.getElementById("direccion").value = "";
+                 $("#rif").focus();
+                 $("#addJuridico").modal("show");
+    }
 
+	
+	function formNatural(){
+        $("#id_bnatutal").val("");
+        document.getElementById("cedula").value    = "";
+        document.getElementById("nombres").value   = "";
+        document.getElementById("apellidos").value = "";
+        document.getElementById("telefono").value  = "";
+        document.getElementById("email").value     = "";
+        document.getElementById("direccion").value = "";
+        document.getElementById("cedula").focus();
+        $("#addNatural").modal("show");
+    }
+
+	
+	function formInterno(){
+        $("#descripcion").value = "";
+        $("#addInterno").modal("show");
+        $("#descripcion").focus();
+    }
+	
+	function pasarBenf(xtipo,xcodigo){
+		
+		$("#cmbTipoBenf").val(xtipo);
+		$("#id_beneficiario").val(xcodigo);
+		$("#modal_beneficiarios").modal("hide");
+		$("#id_beneficiario").focus();
+		$("#beneficiario").focus();
+		
+
+	}
+
+	 $(document).ready(function(){
+
+		$("#tablaBeneficiarios").DataTable({
+                    "order": [[1, "asc"]],
+                    "language":{
+                    "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                    "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(filtrada de _MAX_ registros)",
+                        "loadingRecords": "Cargando...",
+                        "processing":     "Procesando...",
+                        "search": "Buscar:",
+                        "zeroRecords":    "No se encontraron registros coincidentes",
+                        "paginate": {
+                            "next":       "Siguiente",
+                            "previous":   "Anterior"
+                        },
+                    }
+                });
+
+		setNumOcompra();
+		$("#cod_ocompra").focus();
+	 });
+	 
 </script>

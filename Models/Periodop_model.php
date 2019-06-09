@@ -3,7 +3,7 @@
 class Periodop_model extends Conexion {
 	private $tabla="periodo";
 	private $id_periodo;
-	private $id_estidad;
+	private $id_entidad;
 	private $descripcion;
 	private $observacion;
 
@@ -47,6 +47,10 @@ class Periodop_model extends Conexion {
 
 	function periodoActual($fields,$condicion){
 		return json_encode($this->db->select1($fields,$this->tabla,$condicion));
+	}
+
+	function consultaModel(){
+		return $this->db->select1("*",$this->tabla,"id_periodo=$this->id_periodo");
 	}
 
 
