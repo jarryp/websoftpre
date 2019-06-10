@@ -1,5 +1,4 @@
 
-
 <div id="page-wrapper">
  <div id="page-inner">
   <div class="row">
@@ -59,7 +58,7 @@
        <div class="form-group col-md-12">
        	<div class="col-md-1"><label>Descripción:</label></div>
        	<div class="col-md-10">
-       		<textarea rows="2" cols="40" class="form-control"></textarea>
+       		<textarea rows="2" cols="40" class="form-control" id="oc_descripcion" name="oc_descripcion"></textarea>
        	</div>
        </div>
 
@@ -274,7 +273,7 @@
 		$("#id_beneficiario").val(xcodigo);
 		$("#modal_beneficiarios").modal("hide");
 		$("#id_beneficiario").focus();
-		$("#beneficiario").focus();
+		$("#oc_descripcion").focus();
 		
 
 	}
